@@ -40,10 +40,18 @@ export function saveScore(entry: SavedScore): boolean {
   }
 }
 
+/** Mejor entrada guardada de `name` en `gameId`, o null si no hay ninguna. */
+export function getBestEntry(gameId: string, name: string): SavedScore | null {
+  let best: SavedScore | null = null;
+  for (const e of readAll()) {
+    if (e.game === gameId && e.name === name && (!best || e.score > best.score)) {
+      best = e;
+    }
+  }
+  return best;
+}
+
 /** Mejor puntuación guardada de `name` en `gameId`, o null si no hay ninguna. */
 export function getBestScore(gameId: string, name: string): number | null {
-  const scores = readAll()
-    .filter((e) => e.game === gameId && e.name === name)
-    .map((e) => e.score);
-  return scores.length ? Math.max(...scores) : null;
+  return getBestEntry(gameId, name)?.score ?? null;
 }
