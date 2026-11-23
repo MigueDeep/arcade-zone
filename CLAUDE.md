@@ -14,6 +14,9 @@ Arcade Vault (package name `arcade-zone`): an online platform to play games and 
 
 No test runner is configured.
 
+## Skills
+Para diseño usa mi skill de /frontend-design
+
 ## Next.js version warning
 
 Next.js 16.4.6 with React 19.3 and App Router (`app/`). This version has breaking changes from older Next.js. Before writing Next.js code, read the relevant guide in `node_modules/next/dist/docs/01-app/` (see AGENTS.md).

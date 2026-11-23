@@ -1,6 +1,12 @@
 {
   "version": 2,
   "skills": {
+    "frontend-design": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "106acf230014cbb43ca34e6410371321b56ca742f9ee0442e8ec05bf02eb0384"
+    },
     "spec": {
       "source": "Klerith/fernando-skills",
       "commit": "0c33d2f4f6bcd7efb21756eea6818e0f3f2d72fb",
