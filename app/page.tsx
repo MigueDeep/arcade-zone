@@ -1,5 +1,9 @@
 import Link from "next/link";
 import { FloatingSilhouettes } from "@/components/floating-silhouettes";
+import { FeatureIcon } from "@/components/feature-icon";
+import { MiniGameCard } from "@/components/mini-game-card";
+import { GAMES } from "@/lib/games";
+import { FEATURES } from "@/lib/home-data";
 
 export default function Home() {
   return (
@@ -33,6 +37,43 @@ export default function Home() {
             <span>DESLIZA</span>
             <span className="arrow">▼</span>
           </div>
+        </div>
+      </section>
+
+      {/* WHY */}
+      <section className="home-section">
+        <div className="section-head">
+          <div className="kicker pixel neon-magenta">{"// 01"}</div>
+          <h2 className="section-title">¿POR QUÉ ARCADE VAULT?</h2>
+          <div className="section-rule"></div>
+        </div>
+        <div className="feature-grid">
+          {FEATURES.map((f) => (
+            <div key={f.title} className={"feature-card " + f.color}>
+              <FeatureIcon kind={f.icon} />
+              <div className="ft-title pixel">{f.title}</div>
+              <div className="ft-desc">{f.desc}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* GAMES PREVIEW */}
+      <section className="home-section">
+        <div className="section-head">
+          <div className="kicker pixel neon-cyan">{"// 02"}</div>
+          <h2 className="section-title">JUEGOS DISPONIBLES AHORA</h2>
+          <div className="section-rule"></div>
+        </div>
+        <div className="mini-rail">
+          {GAMES.slice(0, 6).map((g) => (
+            <MiniGameCard key={g.id} game={g} />
+          ))}
+        </div>
+        <div style={{ textAlign: "center", marginTop: 24 }}>
+          <Link href="/juegos" className="btn lg">
+            VER TODOS LOS JUEGOS →
+          </Link>
         </div>
       </section>
     </div>
