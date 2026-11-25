@@ -1,6 +1,6 @@
 # SPEC 02 — Home (landing) de Arcade Vault
 
-> **Status:** Approved
+> **Status:** Implemented
 > **Depends on:** SPEC 01
 > **Date:** 2026-11-25
 > **Objective:** Portar la landing `home` del template `references/templates/home-about` a la ruta `/` de Next.js, mover la biblioteca a `/juegos` y agregar el enlace "Inicio" a la nav, con contenido estático mock tipado.
