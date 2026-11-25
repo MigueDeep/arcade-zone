@@ -35,7 +35,7 @@ export default function NotFound() {
         Esta ficha no corresponde a ninguna máquina del Vault.
         <span className="blink"> _</span>
       </p>
-      <Link href="/" className="btn lg">
+      <Link href="/juegos" className="btn lg">
         VOLVER AL VAULT
       </Link>
     </div>

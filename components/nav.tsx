@@ -5,18 +5,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "@/components/session-provider";
 
+type NavItem = "inicio" | "biblioteca" | "salon" | "acceso";
+
 export function Nav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const { user, ready, logout } = useSession();
 
-  const isActive = (name: "biblioteca" | "salon" | "acceso") => {
-    if (name === "biblioteca")
-      return pathname === "/" || pathname.startsWith("/juegos");
+  const isActive = (name: NavItem) => {
+    if (name === "inicio") return pathname === "/";
+    if (name === "biblioteca") return pathname.startsWith("/juegos");
     if (name === "salon") return pathname.startsWith("/salon");
     return pathname.startsWith("/acceso");
   };
-  const cls = (name: "biblioteca" | "salon" | "acceso") =>
+  const cls = (name: NavItem) =>
     isActive(name) ? "active" : undefined;
   const close = () => setOpen(false);
 
@@ -30,7 +32,10 @@ export function Nav() {
           </div>
         </Link>
         <div className="links">
-          <Link href="/" className={cls("biblioteca")}>
+          <Link href="/" className={cls("inicio")}>
+            Inicio
+          </Link>
+          <Link href="/juegos" className={cls("biblioteca")}>
             Biblioteca
           </Link>
           <Link href="/salon" className={cls("salon")}>
@@ -79,7 +84,10 @@ export function Nav() {
         <div className="pixel neon-cyan" style={{ fontSize: 11, marginBottom: 16 }}>
           MENÚ
         </div>
-        <Link href="/" className={cls("biblioteca")} onClick={close}>
+        <Link href="/" className={cls("inicio")} onClick={close}>
+          Inicio
+        </Link>
+        <Link href="/juegos" className={cls("biblioteca")} onClick={close}>
           Biblioteca
         </Link>
         <Link href="/salon" className={cls("salon")} onClick={close}>

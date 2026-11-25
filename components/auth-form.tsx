@@ -61,12 +61,12 @@ export function AuthForm() {
     setErrors(found);
     if (Object.keys(found).length > 0) return;
     login({ name: user.trim().toUpperCase().slice(0, 10) });
-    router.push("/");
+    router.push("/juegos");
   };
 
   const guest = () => {
     login(null);
-    router.push("/");
+    router.push("/juegos");
   };
 
   return (
