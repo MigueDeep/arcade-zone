@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "@/components/session-provider";
 
-type NavItem = "inicio" | "biblioteca" | "salon" | "acceso";
+type NavItem = "inicio" | "biblioteca" | "salon" | "acerca" | "acceso";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -16,6 +16,7 @@ export function Nav() {
     if (name === "inicio") return pathname === "/";
     if (name === "biblioteca") return pathname.startsWith("/juegos");
     if (name === "salon") return pathname.startsWith("/salon");
+    if (name === "acerca") return pathname.startsWith("/acerca");
     return pathname.startsWith("/acceso");
   };
   const cls = (name: NavItem) =>
@@ -40,6 +41,9 @@ export function Nav() {
           </Link>
           <Link href="/salon" className={cls("salon")}>
             Salón de la Fama
+          </Link>
+          <Link href="/acerca" className={cls("acerca")}>
+            Acerca de
           </Link>
         </div>
         <div className="spacer"></div>
@@ -92,6 +96,9 @@ export function Nav() {
         </Link>
         <Link href="/salon" className={cls("salon")} onClick={close}>
           Salón de la Fama
+        </Link>
+        <Link href="/acerca" className={cls("acerca")} onClick={close}>
+          Acerca de
         </Link>
         <Link href="/acceso" className={cls("acceso")} onClick={close}>
           {user ? "Cuenta" : "Iniciar Sesión"}
