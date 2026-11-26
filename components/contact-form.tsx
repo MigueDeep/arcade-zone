@@ -36,8 +36,9 @@ export function ContactForm() {
   const shakeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.msg.trim()) {
+      // Cancela el envío (y con él la Server Action) solo si faltan campos.
+      e.preventDefault();
       setShake(true);
       if (shakeTimer.current) clearTimeout(shakeTimer.current);
       shakeTimer.current = setTimeout(() => setShake(false), 400);
