@@ -20,6 +20,7 @@ export async function sendContact(
   // Honeypot: un bot rellena `website`. Respondemos éxito sin enviar nada.
   const trap = formData.get("website");
   if (typeof trap === "string" && trap.length > 0) {
+    console.warn("[contacto] Honeypot activado: no se envía correo.");
     return { ok: true, name: typeof raw.name === "string" ? raw.name.trim() : "" };
   }
 
